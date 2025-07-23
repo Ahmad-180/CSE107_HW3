@@ -88,8 +88,13 @@ def break_DH_handshake(g, p, ga, gb, ctxt):
 	"""
 
 	# TODO: your code here
-	...
-	return b"TODO return the plaintext"
+	a = bsgs(g, ga, p)          
+	if a is None:               
+		b = bsgs(g, gb, p)
+		shared = pow(ga, b, p) 
+	else:
+		shared = pow(gb, a, p)  
+	return D(shared, ctxt)
 
 
 ## You don't need to (and should not) modify anything below. It's used for testing your code locally.
