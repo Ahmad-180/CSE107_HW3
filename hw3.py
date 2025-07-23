@@ -60,7 +60,7 @@ def bsgs(g, gx, p):
 	m= math.isqrt(p-1) +1
 	baby = {pow(g, j,p): j for j in range(m)}
 	g_inv_m = pow(g, p-1 -m,p)
-	gamma = GeneratorExit
+	gamma = gx
 	for i in range(m):
 		if gamma in baby:
 			return i* m + baby[gamma]
