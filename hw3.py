@@ -21,8 +21,10 @@ def warmup(g, p, ga, b):
 	## 
 
 	# TODO: your code here
-	...
-	return (0, 0)
+	gb= pow(g,b,p)
+	shared=(ga,b,p)
+
+	return (gb, shared)
 
 def bsgs(g, gx, p):
 	"""
