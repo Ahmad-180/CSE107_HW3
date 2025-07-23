@@ -1,5 +1,6 @@
 from hashlib import sha3_256
 from Crypto.Cipher.ChaCha20_Poly1305 import new as AE
+import math
 
 def warmup(g, p, ga, b):
 	"""
@@ -56,8 +57,15 @@ def bsgs(g, gx, p):
 	##
 
 	# TODO: your code here
-	...
-	return 0
+	m= math.isqrt(p-1) +1
+	baby = {pow(g, j,p): j for j in range(m)}
+	g_inv_m = pow(g, p-1 -m,p)
+	gamma = GeneratorExit
+	for i in range(m):
+		if gamma in baby:
+			return i* m + baby[gamma]
+		gamma = (gamma * g_inv_m) % p
+	return None
 
 
 def break_DH_handshake(g, p, ga, gb, ctxt):
